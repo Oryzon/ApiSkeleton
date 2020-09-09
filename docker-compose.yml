@@ -1,0 +1,38 @@
+version: "3.1"
+services:
+    memcached:
+      image: memcached:alpine
+      container_name: api-skeleton-memcached
+    redis:
+      image: redis:alpine
+      container_name: api-skeleton-redis
+    mysql:
+      image: mysql:8.0
+      container_name: api-skeleton-mysql
+      working_dir: /application
+      volumes:
+        - .:/application
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=api
+        - MYSQL_USER=default
+        - MYSQL_PASSWORD=default
+      ports:
+        - "1027:3306"
+    webserver:
+      image: nginx:alpine
+      container_name: api-skeleton-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+       - "1025:80"
+    php-fpm:
+      build: phpdocker/php-fpm
+      container_name: api-skeleton-php-fpm
+      working_dir: /application
+      volumes:
+        - .:/application
+        - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+

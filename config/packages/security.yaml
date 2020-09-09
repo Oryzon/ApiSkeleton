@@ -1,0 +1,63 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: auto
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: username
+    firewalls:
+        refresh:
+            pattern: ^/auth/token/refresh
+            stateless: true
+            anonymous: true
+
+        register:
+            pattern: ^/auth/register
+            stateless: true
+            anonymous: true
+
+        login:
+            pattern:  ^/auth/login
+            stateless: true
+            anonymous: true
+            user_checker: App\Security\UserChecker
+            json_login:
+                check_path:               /auth/login_check
+                success_handler:          lexik_jwt_authentication.handler.authentication_success
+                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+
+        api:
+            pattern:   ^/
+            stateless: true
+            anonymous: true
+            guard:
+                authenticators:
+                    - app.jwt_token_authenticator
+
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/auth/token/refresh,     roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/forget,            roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/activate,          roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/auth/register,          roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/auth/login,             roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/doc,                    roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/_profiler,              roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/_wdt,                   roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/,                       roles: IS_AUTHENTICATED_FULLY }

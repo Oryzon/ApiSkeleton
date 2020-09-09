@@ -1,0 +1,6 @@
+gesdinet_jwt_refresh_token:
+  ttl: 2592000
+  firewall: api
+  token_parameter_name: rtoken
+  user_provider: security.user.provider.concrete.app_user_provider
+  single_use: true
