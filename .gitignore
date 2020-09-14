@@ -1,6 +1,7 @@
 
 ###> symfony/framework-bundle ###
 /.idea/
+/.env
 /.env.local
 /.env.local.php
 /.env.*.local
@@ -9,5 +10,5 @@
 /var/
 /vendor/
 /migrations/
-/config/jwt/
+/config/jwt/*
 ###< symfony/framework-bundle ###

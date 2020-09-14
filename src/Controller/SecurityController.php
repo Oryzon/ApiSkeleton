@@ -57,7 +57,7 @@ class SecurityController extends ApiController {
     ) {
         $values = json_decode($request->getContent());
 
-        if ($error = $this->__checkProperty($values, ['username', 'email', 'password'])) {
+        if (!$error = $this->__checkProperty($values, ['username', 'email', 'password'])) {
             return $error;
         }
 

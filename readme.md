@@ -27,12 +27,16 @@ Very simple answer : I find than API Platform is to complete and complex for my 
 ## How To Use
 - Git clone this project
 - cd to project and "docker-compose up -d"
-- In .env, configure for your use
-- Go to the PHP container, in the project and bin/console doctrine:schema:create (or something like this, I don't remember)
-- Generate JWT keys (with openSSL) and place them in `config/bin`
+- Copy `.env.sample`, configure for your use
+- Go to the PHP container, and `composer update`
+- Still in the PHP container, in the project and `bin/console doctrine:schema:create`
+- Generate JWT keys (with openSSL) and place them in `config/jwt` :
+  - Execute in PHP container this:
+  - `openssl genrsa -out config/jwt/private.pem -aes256 4096`
+  - `openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem`
 - It's done, you can visit `http://localhost:1025/doc`, and see the magic project.
 
-(If i've forget something, don't hesitate)
+(You also have a Postman collection export for testing this API)
 
 ## Documentation
 - [Symfony 5.1 Documentation](https://symfony.com/doc/5.1/components/index.html)

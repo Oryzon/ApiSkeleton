@@ -1,0 +1,333 @@
+{
+	"info": {
+		"_postman_id": "6e82941a-ab8d-4a5d-a766-39893ae5b075",
+		"name": "ApiSkeleton",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@oryzon.me\",\r\n    \"username\": \"Oryzon\",\r\n    \"password\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1025/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1025",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1025/user/activate/[token]",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1025",
+							"path": [
+								"user",
+								"activate",
+								"[token]"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Oryzon\",\r\n    \"password\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1025/auth/login_check",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1025",
+							"path": [
+								"auth",
+								"login_check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1OTY1MzU1ODIsImV4cCI6MTU5NjUzOTE4Miwicm9sZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6Ik9yeXpvbiIsImVtYWlsIjoidmluY2VudC5ib3VsYW5nZXJAY2hhdXNzZWEuZnIiLCJpc0FjdGl2ZSI6dHJ1ZX0.iAOHvhAK4z3Mv-3eR8S-eMobzZuTGGqEsKRifiFAAyakbVU1JLwfge3AHm7Fm31zmWTYIgVBTKsenvLaw2XcPejJw5XFmdt--YQnErNDKqmNR0sNx118J_6TyextYpO2Lo7u7uXFgWUwHtISfxHEWvRBuHiwCeFzgH2wnbzHz78Pom4XT7uphtYHsbEWIMNmF7OtbHVbPRCmHp2QuhDwOPLL9fvw38q_Tcm13qhRqdXW80VeG63iNLyZAXFTr_JtwkT1wpeZAxhnMOGuYXL0zwzlVkQ4-MpHJvfntr5fE6DFTi8Fl7EhnCJ6lZMWeDhfzkTxKoPX9MEmHOFgAZMyCUDtLgPBzsDfqKq6EsfUegEiSlEd8JKOtztossrB4rC10xnbI-aPP09pqycg8E5WDpckN98JVUhLQtj4hkjU7WEUfs6xubHSoiFU_lKMXH6kULSQWv8QobvPgh7w3Gi018ZbTzX7xDzSgOm0gNGoIdh3NUUCfJJsj1PgGOeOyVz2__oeuebyWRnVh-L56KS2jkr-cEV4_Lh4_1WZp__CCaZlwmT32x7q5egiL6QCus6_Osu5ajVf9ShcOeXf47AkzEob-XMIuJbP2a4ltWCJBppHzVfXwgm4RneqemrdtJMUSJVdIyXmRoPRhl20L3wQ0hdfeIjaofxdIpvDGNMFi_g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1025/user/profile/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1025",
+							"path": [
+								"user",
+								"profile",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1OTY1MzUzMDUsImV4cCI6MTU5NjUzODkwNSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiT3J5em9uMiIsImVtYWlsIjoidmluY2VudC5ib3VsYW5nZXIyQGNoYXVzc2VhLmZyIiwiaXNBY3RpdmUiOnRydWV9.YtMQb7PJASDVWx4q31hawxLx2YCx2rSuqx4xf4d1PwnBAnRsNOwPz2eH52tQyxlnQ-fpGhVYsLrlBkvDFlquWT3DhmuShTDDvjN_5bUo6GXYXzNU3WhxISvk12RWGvXvz3I0bOcUNqsDsQpHGQ5XrO8aF03_4oRClMUXtNRn9fp8eMgqJZXRAlch0NwrLJJL_xRbjKlldw2AsfVfO1PUHWOaKedT5TTSncmJfJluuRzV2nlTSU27N6eSvKgQuPiHT04XN9Hq3eji5zxmGcYBSOv3Q172qkOsMAHtdMsJgFIWL-jFtSIQ0HQAkZ0RBMmRjjCsCe-QD9EQ5EuZifqWMlFWUSc2T90KhSvPrmtoflwXhJlZ-OAkkOU6kGlgvR1Mlp3ynHMBwXFiJlzYT9j8AO5Z0ODVyDGJIhlVkaR-hwWRlbFGbcBlqqccAlFZOAchGPZdbQ-eWinPfv9tnOoxfFGvCw-gT2CRs2Jl4GMTVuFKeZq1XX1R1I5Se2GxwyDoV2f6KdhB4lcnzqxfig0VZAR9UB8JNU772yUOEwjkYIc9pze-jnlFYtMUHxPrUZIAjEyO9btK8v6nlOPn2t6dvFZvan6-oncJS_bpWgK9r-in4Jbcfs9E1RsP2Z__zf9vwXS8Gk_XaM6x3Oy-7QwD5SsKDNzFYxIhtuTBx3kRpHw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1025/user/remove/[id]",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1025",
+							"path": [
+								"user",
+								"remove",
+								"[id]"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1OTY2MTcxNzQsImV4cCI6MTU5NjYyMDc3NCwicm9sZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6Ik9yeXpvbiIsImVtYWlsIjoidmluY2VudC5ib3VsYW5nZXJAY2hhdXNzZWEuZnIiLCJpc0FjdGl2ZSI6dHJ1ZX0.HKw-G3pnuOTH0A8gWhS-OEOxZCRtLCKsblHzl5fgAIlnCZRSA4PdmKpzYumuZAgMh-m1di6sEsW_yJdu3ED6ckLGq8bXqlIaNcCv7HQZrPhF0WioU4pGGdfn4CFKxH-z95JC_jhGkx1gR-w6oTfC_D1MJMILkWJffGn2JEouc0CEGoLMGp7PJM43uWxFrVE8Fsm0CNsdt4W_U248IEw4AFJsDHOtdCeb-tkrmulkRxu9-oqSTXiegAb1-WmgXa_u_zlvcNNnqQAaO2oU_K-APQT7coM5-T9hAbfTzDnqilUVw5P8J2qAqoglysPvbUILBasiHHuclfESYinAHySKGpEssQAbH73kfuBxZ7PECl_-GaWMqIJwHYDHZqazorLdb4eukEBk7Smjhrp1si84-pg-4v8BxhvwzoEM_beO9_ZF1NPjmHArT3WKCzDdf5LGlKBmWL8FStWPua6rUmNJzx23MZr0D9GbxYMkDS4OX0idtLUS9bOw8NAO-5_zVXAAjfYwOYElnHzQVGoYjFb4k6Fvg2NfN6kgbELr9UcGzAvb7lKPnG_plTNlM_fSqZoewCvEybS9couQ4LzQKiwA1aJATyd6ye80SUwnhD5wFa388Dglxa7tkls_9pNE0b1wI8jRKbeJZ1ZzyR1D825bp9hExKGkcJdOuBnNjtlGhy4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"OryzonORZ\",\r\n    \"email\": \"oryzon@apiskeleton.com\",\r\n    \"roles\": \"ROLE_USER,ROLE_ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1025/user/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1025",
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1OTY2MzIzMDIsImV4cCI6MTU5NjYzNTkwMiwicm9sZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6Ik9yeXpvbiIsImVtYWlsIjoidmluY2VudC5ib3VsYW5nZXI3QGNoYXVzc2VhLmZyIiwiaXNBY3RpdmUiOnRydWV9.UMOI5SvdAjWqlDBu3YLXzb6n8s4zqcZ3vbyNhaMIUkkn5Js8ieECLlvaZY58sz-I9oAmtjwxI65P0zDYkpnur6mBXhvQbO-Xor5l_VgmJoRUvp3SXf2lr5_YEIM1xrgMfhQTNdSPBcIRyfXrCHWalECfJh8RwVTRQ2wxKl-sNxbJQd-OFLf2QX_YPJgD9dU20mtVsNOpFr8leviTrciRPOygQ9SnvSTq79qKCEVk5-UMkbQn-T7kuJwxF19jNrDfnRGOGxzM1UZclj82qVq167wsRtozLBVPspIgadU4t3gHNzHv9aNxCUd1s_vWhH0exWnJ4JYj5CTAABauQKajqGyrAX6SHlnxrlruxKdkgtWYyHAdFXgCLiNagqp0X0WTbI49mztADOLMlGiURQB1QFvc7A9gjOi7WeaXctREc4P7LhIWxYmPcBC82w6Xi0WHArRkJ8xZqEdZpKXs1aRVlKyMFBXi3WLh3qi8X-sxoj8MtFx3nXW2e9Qzr0xkNUg9-x9VFFw93THbtajzOnmx1RQ5v9eqq9Rmp6lhLlRJvjG4IpyUx2byKYQmIWD4TurSrb1lIhYCde4BZdHHrEi0K89_KwuNmVrgm6ilZBaFE4ORN4RNwuwd-6fYz6Uc2Zf8S1gxkJg68SSVWYruPyRpaqtsNw2RPeP0GzRRLI22HHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Oryzon\",\r\n    \"roles\": \"ROLE_USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1025/user/edit/[id]",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1025",
+							"path": [
+								"user",
+								"edit",
+								"[id]"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forget - Ask",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1025/user/forget/[mailUserToChangePassword]",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1025",
+							"path": [
+								"user",
+								"forget",
+								"[mailUserToChangePassword]"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forget - Change",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"this_is_the_new_password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1025/user/forget/{[token]",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1025",
+							"path": [
+								"user",
+								"forget",
+								"{[token]"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "General",
+			"item": [
+				{
+					"name": "Send Email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1OTY2MTUxNjQsImV4cCI6MTU5NjYxODc2NCwicm9sZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9BRE1JTiJdLCJ1c2VybmFtZSI6Ik9yeXpvbiIsImVtYWlsIjoidmluY2VudC5ib3VsYW5nZXJAY2hhdXNzZWEuZnIiLCJpc0FjdGl2ZSI6dHJ1ZX0.MwIHKP2vMtc7DciKNK3gsp1bSa87XIMzVn__rZnugkacYZT5MrHMim-EkP2qK7bzyAxSfI4bIg4d5i3NwxidZ5H39iuxqNOgXshLpy7aan1c7cNG2sBJLlwWcWOykpb5_3hdvvNm888HR77q-KcD7VjDwVKI6PijRT_xTDVLnqNFwOcGXcuWkPhkuF9AR50MBx0iMoGR03Kd-2j-MSk51pjcKHe8nbEiHK5LUVTlNUrXsAhNsH6Wq1--geAqOrBZH3CExBC3gv1udKpsXUtuEWGj-xx4l88xMHVnK3Pno_zH3HSc9nam9lg0Ekx7_E5L0HdldFJqgEcqVhi_i4DgvUr3fcLbylkUS3lth4yxjdflqA5NjjvT8DvgduJ05nEVIadlPrJhVaZAJ_VMZzJf5yE8v2LGGAlc5BeeE8WH5dhOW9LuADmQQhOdK-fp9IxIKTyD58pT2Tcg6QJuB_X2rggZ149jMe_lDboHdtbEgLhWnskpzncvFn6CsG_NZwfBYZlvRq-_c6pf2r_LXUsOLwgrMacVzpZPIygqr_zxlGubgMHEc7Yb6OS_6NGzG975h3etIfZvwSffE9OqV62dFItyA9c7KfPD-i_7k7UGxw0N1kNi1e4nKOddQrCGbfdZQwxWwUDtgO9HjlHvtziXImb7MI5LffNXcFLTnZdGI-E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"htmlTemplate\": {\r\n        \"project\": \"default\",\r\n        \"group\": \"user\",\r\n        \"template\": \"activate.html.twig\" \r\n    },\r\n    \"email\": {\r\n        \"subject\": \"Please activate your account !\",\r\n        \"context\": {\r\n            \"username\": \"Oryzon\",\r\n            \"token\": \"123456\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1025/send-email/[from]/[to]",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1025",
+							"path": [
+								"send-email",
+								"[from]",
+								"[to]"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
