@@ -286,11 +286,6 @@ class User implements UserInterface
      */
     public function onCreated() {
         $this->setCreated(new DateTime('now'));
-
-        if (GeneralSettings::ACCOUNT_ACTIVATION_NEEDED) {
-            $this->setIsActive(false);
-            $this->createToken();
-        }
     }
 
     /**

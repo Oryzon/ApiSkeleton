@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\GeneralSettings;
 use App\Entity\HttpCode;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -68,6 +67,11 @@ class SecurityController extends ApiController {
         $user->setPassword($passwordEncoder->encodePassword($user, $values->password));
         $user->setRoles($user->getRoles());
 
+        if ($this->getParameter('app.api.account_activation_needed')) {
+            $user->setIsActive(false);
+            $user->createToken();
+        }
+
         $errors = $validator->validate($user);
 
         if (count($errors)) {
@@ -77,9 +81,9 @@ class SecurityController extends ApiController {
         $entityManager->persist($user);
         $entityManager->flush();
 
-        if (GeneralSettings::ACCOUNT_ACTIVATION_NEEDED) {
+        if ($this->getParameter('app.api.account_activation_needed')) {
             $mailerResult = $this->forward('App\Controller\MailerController::sendMail', [
-                'from' => GeneralSettings::DEFAULT_MAIL_FROM,
+                'from' => $this->getParameter('app.api.default_mail_from'),
                 'to' => $user->getEmail(),
                 'subject' => 'Your account have been created',
                 'htmlTemplate' => 'emails/default/user/activate.html.twig',

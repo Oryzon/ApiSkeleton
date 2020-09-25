@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\GeneralSettings;
 use App\Entity\HttpCode;
 use App\Entity\SerializeGroups;
 use App\Entity\User;
@@ -159,7 +158,7 @@ class UsersController extends ApiController {
             $roles = explode(',', $userData->roles);
 
             foreach ($roles as $role) {
-                if (!in_array($role, GeneralSettings::AVAILABLE_ROLE)) {
+                if (!in_array($role, $this->getParameter('app.api.available_role'))) {
                     return $this->__serializeError("Role '$role' is not a valid role.");
                 }
             }
@@ -184,7 +183,7 @@ class UsersController extends ApiController {
         $entityManager->flush();
 
         $mailerResult = $this->forward('App\Controller\MailerController::sendMail', [
-            'from' => GeneralSettings::DEFAULT_MAIL_FROM,
+            'from' => $this->getParameter('app.api.default_mail_from'),
             'to' => $user->getEmail(),
             'subject' => 'Your account have been created by and administrator.',
             'htmlTemplate' => 'emails/default/user/create.html.twig',
@@ -256,7 +255,7 @@ class UsersController extends ApiController {
         }
 
         if (!$this->checkIfTokenIsAskable($userToResetPassword->getTokenCreatedAt())) {
-            return $this->__serializeError("You have asked a token there is less than " . GeneralSettings::TOKEN_ASKABLE_EVERY . " seconds.", HttpCode::FORBIDDEN);
+            return $this->__serializeError("You have asked a token there is less than " . $this->getParameter('app.api.token_askable_every') . " seconds.", HttpCode::FORBIDDEN);
         }
 
         $userToResetPassword->createToken(20);
@@ -265,7 +264,7 @@ class UsersController extends ApiController {
         $entityManager->flush();
 
         $mailerResult = $this->forward('App\Controller\MailerController::sendMail', [
-            'from' => GeneralSettings::DEFAULT_MAIL_FROM,
+            'from' => $this->getParameter('app.api.default_mail_from'),
             'to' => $userToResetPassword->getEmail(),
             'subject' => "You have lost your password, here is to change it.",
             'htmlTemplate' => 'emails/default/user/forget.html.twig',
@@ -331,7 +330,7 @@ class UsersController extends ApiController {
         $entityManager->flush();
 
         $mailerResult = $this->forward('App\Controller\MailerController::sendMail', [
-            'from' => GeneralSettings::DEFAULT_MAIL_FROM,
+            'from' => $this->getParameter('app.api.default_mail_from'),
             'to' => $userToChangePassword->getEmail(),
             'subject' => "You have change your password",
             'htmlTemplate' => 'emails/default/user/changed.html.twig',
@@ -385,7 +384,7 @@ class UsersController extends ApiController {
             $roles = explode(',', $userData->roles);
 
             foreach ($roles as $role) {
-                if (!in_array($role, GeneralSettings::AVAILABLE_ROLE)) {
+                if (!in_array($role, $this->getParameter('app.api.available_role'))) {
                     return $this->__serializeError("Role '$role' is not a valid role.");
                 }
             }
@@ -471,7 +470,13 @@ class UsersController extends ApiController {
      *
      * @throws Exception
      */
-    private function generateSecurePassword($length = GeneralSettings::DEFAULT_PASSWORD_LENGTH) {
+    private function generateSecurePassword($length = null) {
+
+        $length =
+            $length !== null
+                ? $length
+                : $this->getParameter('app.api.default_password_length');
+
         $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`-=~!@#$%^&*()_+,./<>?;:[]{}\|';
 
         $str = '';
@@ -492,7 +497,7 @@ class UsersController extends ApiController {
     private function checkIfTokenIsExpired(DateTime $tokenCreatedAt) {
         $secondInterval = $this->dateIntervalToSecond($tokenCreatedAt->diff(new DateTime('now')));
 
-        return $secondInterval > GeneralSettings::TOKEN_EXPIRATION_MOMENT;
+        return $secondInterval > $this->getParameter('app.api.token_expiration_moment');
     }
 
     /**
@@ -503,7 +508,7 @@ class UsersController extends ApiController {
     private function checkIfTokenIsAskable(DateTime $tokenCreatedAt) {
         $secondInterval = $this->dateIntervalToSecond($tokenCreatedAt->diff(new DateTime('now')));
 
-        return $secondInterval > GeneralSettings::TOKEN_ASKABLE_EVERY;
+        return $secondInterval > $this->getParameter('app.api.token_askable_every');
     }
 
     /**

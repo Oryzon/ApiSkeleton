@@ -4,6 +4,20 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    app.api.title: "ApiSkeleton"
+    app.api.version: 1.0.0
+    app.api.description: "Made with love with Docker, JWT, Nelmio, and SF5"
+
+    app.api.token_expiration_moment: 604800 # 7 days
+    app.api.token_askable_every: 1200 # 20 minutes
+
+    app.api.account_activation_needed: true
+    app.api.default_password_length: 8
+
+    app.api.default_mail_from: 'no-reply@apiskeleton.localhost'
+    app.api.default_mail_template_folder: 'default'
+
+    app.api.available_role: ['ROLE_USER', 'ROLE_ADMIN']
 
 services:
     # default configuration for services in *this* file

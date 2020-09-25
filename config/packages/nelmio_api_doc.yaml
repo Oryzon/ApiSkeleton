@@ -1,10 +1,9 @@
 nelmio_api_doc:
   documentation:
-#    host: api.skeleton.com
     info:
-      title: ApiSkeleton
-      description: Made with love with Docker, JWT, Nelmio, and SF5
-      version: 1.0.0
+      title: '%app.api.title%'
+      description: '%app.api.description%'
+      version: '%app.api.version%'
     securityDefinitions:
       Bearer:
         type: apiKey
