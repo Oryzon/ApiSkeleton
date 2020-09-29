@@ -9,14 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class JWTTokenAuthenticator extends BaseAuthenticator {
 
     public function checkCredentials($credentials, UserInterface $user) {
-//        if (!$user->getIsActive() && $user->getDeleted() !== null) {
-//            throw new CustomUserMessageAuthenticationException("Your user account have been deleted.");
-//        }
-//
-//        if (!$user->getIsActive()) {
-//            throw new CustomUserMessageAuthenticationException("Your user account is not active.");
-//        }
-
+        // This will be used for checking some information after login and using a route.
         return true;
     }
 }

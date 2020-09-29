@@ -1,5 +1,8 @@
 <?php
 
+// Why I don't use ResponseClass ?
+// Because there is not all the HttpCode in this class!
+
 namespace App\Entity;
 
 /**

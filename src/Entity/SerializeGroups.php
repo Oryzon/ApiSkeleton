@@ -1,5 +1,7 @@
 <?php
 
+// This class is for having a general place for all the serialization group used in API return.
+
 namespace App\Entity;
 
 class SerializeGroups {
