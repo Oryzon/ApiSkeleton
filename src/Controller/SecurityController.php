@@ -95,8 +95,7 @@ class SecurityController extends ApiController {
             if ($mailerResult) {
                 $data = [
                     'status' => HttpCode::CREATED,
-                    'message' => "User created, need to activate account. (Check your email)",
-                    'token' => $user->getToken()
+                    'message' => "User created, need to activate account. (Check your email)"
                 ];
             } else {
                 $entityManager->remove($user);

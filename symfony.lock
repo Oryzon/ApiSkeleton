@@ -26,6 +26,9 @@
     "doctrine/dbal": {
         "version": "2.10.2"
     },
+    "doctrine/deprecations": {
+        "version": "v0.5.3"
+    },
     "doctrine/doctrine-bundle": {
         "version": "2.0",
         "recipe": {
@@ -87,6 +90,9 @@
     "exsyst/swagger": {
         "version": "v0.4.1"
     },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.5"
+    },
     "friendsofsymfony/rest-bundle": {
         "version": "2.2",
         "recipe": {
@@ -123,6 +129,9 @@
     "laminas/laminas-zendframework-bridge": {
         "version": "1.0.4"
     },
+    "lcobucci/clock": {
+        "version": "2.0.0"
+    },
     "lcobucci/jwt": {
         "version": "3.3.2"
     },
@@ -137,6 +146,9 @@
         "files": [
             "config/packages/lexik_jwt_authentication.yaml"
         ]
+    },
+    "lorenzo/pinky": {
+        "version": "1.0.5"
     },
     "namshi/jose": {
         "version": "7.2.3"
@@ -167,6 +179,9 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.3.0"
+    },
+    "phpstan/phpdoc-parser": {
+        "version": "0.5.4"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -228,6 +243,9 @@
             "bin/console",
             "config/bootstrap.php"
         ]
+    },
+    "symfony/css-selector": {
+        "version": "v5.1.11"
     },
     "symfony/dependency-injection": {
         "version": "v4.4.11"
@@ -299,6 +317,9 @@
             "version": "4.4",
             "ref": "f8fd4ddb9b477510f8f4bce2b9c054ab428c0120"
         }
+    },
+    "symfony/http-client-contracts": {
+        "version": "v2.4.0"
     },
     "symfony/http-foundation": {
         "version": "v4.4.11"
@@ -474,6 +495,18 @@
     },
     "symfony/yaml": {
         "version": "v4.4.11"
+    },
+    "tijsverkoyen/css-to-inline-styles": {
+        "version": "2.2.3"
+    },
+    "twig/cssinliner-extra": {
+        "version": "v3.3.0"
+    },
+    "twig/extra-bundle": {
+        "version": "v3.3.1"
+    },
+    "twig/inky-extra": {
+        "version": "v3.3.0"
     },
     "twig/twig": {
         "version": "v3.0.4"

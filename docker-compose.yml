@@ -15,8 +15,8 @@ services:
       environment:
         - MYSQL_ROOT_PASSWORD=root
         - MYSQL_DATABASE=api
-        - MYSQL_USER=default
-        - MYSQL_PASSWORD=default
+        - MYSQL_USER=oryzon
+        - MYSQL_PASSWORD=oryzon
       ports:
         - "1027:3306"
     webserver:

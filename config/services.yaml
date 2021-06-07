@@ -14,7 +14,7 @@ parameters:
     app.api.account_activation_needed: true
     app.api.default_password_length: 8
 
-    app.api.default_mail_from: 'no-reply@apiskeleton.localhost'
+    app.api.default_mail_from: 'noreply@localhost'
     app.api.default_mail_template_folder: 'default'
 
     app.api.available_role: ['ROLE_USER', 'ROLE_ADMIN']

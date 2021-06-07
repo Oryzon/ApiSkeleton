@@ -1,3 +1,47 @@
-<h1>Hey {{ username }}, you've lost your password !</h1>
+{% apply inky_to_html|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
+    <wrapper class="header">
+        <container>
+            <row class="collapse headerLogo">
+                <columns small="8" valign="middle" style="padding-bottom: 0px;">
+                    <img class="float-left" src="LOGO_PROJECT" />
+                </columns>
 
-<p>Here is a simple option to reset it, just use this token : {{ token }}</p>
+                <columns small="4" valign="middle" style="padding-bottom: 0px;">
+                    <center>
+                        <button  style="padding-bottom: 0px; margin-bottom: 0px;" class="large" href="#">NAME_PROJECT</button>
+                    </center>
+                </columns>
+            </row>
+        </container>
+    </wrapper>
+
+    <spacer size="16"></spacer>
+
+    <wrapper class="body">
+        <container>
+            <row>
+                <columns style="border-top: 10px solid #00B5CC;">
+                    <spacer size="8"></spacer>
+                    <h3 class="text-center">Welcome {{ username }}</h3>
+
+                    <spacer size="8"></spacer>
+
+                    <p>Here is a simple option to reset it, just use this token : {{ token }}</p>
+                </columns>
+            </row>
+        </container>
+    </wrapper>
+
+    <spacer size="8"></spacer>
+
+    <wrapper class="bottom">
+        <container>
+            <row class="bottomRows">
+                <columns>
+                    <spacer size="16"></spacer>
+                    <p class="text-center" style="color: white;">This is an automatic e-mail.</p>
+                </columns>
+            </row>
+        </container>
+    </wrapper>
+{% endapply %}

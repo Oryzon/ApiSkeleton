@@ -26,6 +26,7 @@ Very simple answer : I find than API Platform is to complete and complex for my 
 
 ## How To Use
 - Git clone this project
+- cd to project and update file "docker-composer.yml"
 - cd to project and "docker-compose up -d"
 - Copy `.env.sample`, configure for your use
 - Go to the PHP container, and `composer update`

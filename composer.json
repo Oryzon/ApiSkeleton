@@ -30,7 +30,10 @@
         "symfony/security-bundle": "5.1.*",
         "symfony/twig-bundle": "5.1.*",
         "symfony/validator": "5.1.*",
-        "symfony/yaml": "5.1.*"
+        "symfony/yaml": "5.1.*",
+        "twig/cssinliner-extra": "^3.3",
+        "twig/extra-bundle": "^3.3",
+        "twig/inky-extra": "^3.3"
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.20",

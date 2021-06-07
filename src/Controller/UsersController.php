@@ -197,8 +197,7 @@ class UsersController extends ApiController {
         if ($mailerResult) {
             $data = [
                 'status' => HttpCode::CREATED,
-                'message' => "User created, and informed.",
-                'token' => $user->getToken()
+                'message' => "User created, and informed."
             ];
         } else {
             $entityManager->remove($user);
